@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJIDY REFRIGERATION CO. LTD</title>
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --surface-dark: #111827;
+            --surface-card: #161f33;
+            --border-color: #26334d;
+            --cyan-glow: #00f0ff;
+            --cyan-dim: #0284c7;
+            --emerald: #10b981;
+            --emerald-hover: #059669;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.04), transparent 25%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVBAR - GLASSMORPHISM */
+        .navbar {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            cursor: pointer;
+            border-left: 4px solid var(--cyan-glow);
+            padding-left: 12px;
+            line-height: 1.1;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.85;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--cyan-glow);
+            letter-spacing: 2.5px;
+            margin-top: 3px;
+        }
+
+        .navbar li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 1.8rem;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .navbar li a:hover,
+        .navbar li a.active {
+            color: var(--cyan-glow);
+            border-bottom-color: var(--cyan-glow);
+        }
+
+        /* HERO SECTION - INDUSTRIAL TECH SPLIT */
+        section[id="#home"] {
+            max-width: 1250px;
+            margin: 3rem auto;
+            padding: 4.5rem 5%;
+            background: linear-gradient(145deg, var(--surface-dark) 0%, #0d1424 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        section[id="#home"]::after {
+            content: "ONITSHA // NIGERIA";
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--cyan-glow);
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            padding: 0.4rem 0.9rem;
+            border-radius: 4px;
+        }
+
+        section[id="#home"] h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 750px;
+        }
+
+        section[id="#home"] p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.2rem;
+            line-height: 1.7;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-blue {
+            background: var(--cyan-glow);
+            color: #05080f;
+            border: 1px solid var(--cyan-glow);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-blue:hover {
+            background: transparent;
+            color: var(--cyan-glow);
+        }
+
+        .btn-green {
+            background: transparent;
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+        }
+
+        .btn-green:hover {
+            background: var(--emerald);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* SEARCH / FILTER BAR (Injected via JS seamlessly) */
+        .catalog-controls {
+            max-width: 1250px;
+            margin: 1rem auto 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .catalog-controls input {
+            background: var(--surface-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.85rem 1.2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 380px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .catalog-controls input:focus {
+            border-color: var(--cyan-glow);
+        }
+
+        .catalog-badge {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* GRID LAYOUT FOR ALL PRODUCTS */
+        .products,
+        #page-products {
+            max-width: 1250px;
+            margin: 2.5rem auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.75rem;
+        }
+
+        #page-products .section {
+            grid-column: 1 / -1;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #page-products .section .products {
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            color: var(--cyan-glow);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* DARK TECH CARDS */
+        .card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan-glow);
+            box-shadow: 0 12px 30px rgba(0, 240, 255, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #0b101b;
+            border: 1px solid #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: capitalize;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .price {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--cyan-glow);
+            margin: 0.4rem 0 1rem 0;
+        }
+
+        .price::before {
+            content: "₦";
+        }
+
+        .card a,
+        .card button {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .card a:hover,
+        .card button:hover {
+            background: var(--emerald);
+            color: #ffffff;
+        }
+
+        /* CONTACT SECTION */
+        #page-contact {
+            max-width: 1250px;
+            margin: 3rem auto;
+            padding: 0 5%;
+            width: 100%;
+        }
+
+        #page-contact .section {
+            background: var(--surface-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--cyan-glow);
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .contact-card input {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.95rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .contact-card input:focus {
+            border-color: var(--cyan-glow);
+        }
+
+        .contact-card .submit {
+            background: var(--cyan-glow);
+            color: #05080f;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .contact-card .submit:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto;
+            background: #05080f;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem 5%;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--surface-card);
+            border-left: 4px solid var(--cyan-glow);
+            color: var(--text-main);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            font-size: 0.9rem;
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        #toast.show {
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar li {
+                margin: 0 0.6rem;
+            }
+
+            section[id="#home"]::after {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            section[id="#home"] h1 {
+                font-size: 2.2rem;
+            }
+
+            #page-contact .section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo" onclick="showPage('home')">EJIDY<br><span>REFRIGERATION CO. LTD</span></div>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">product</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="#contactus">Contact us</a></li>
+    </nav>
+
+    <section id="#home">
+        <h1>FRIDGE & AC SPARE PARTS</h1>
+        <p>High-quality replacement parts for refigeration & air conditioning. Fast delivery in Onitsha and
+            across Nigeria</p>
+        <div>
+            <button class="btn btn-blue" onclick="showPage('products')">Shop Now</button>
+            <a href="https://wa.me/2348037755523" class="btn btn-green" style="text-decoration: none">Chat on
+                Whatsapp</a>
+        </div>
+    </section>
+
+    <section id="#products"></section>
+    <div class="products">
+        <div class="card"><img src="air filter.webp">
+            <h3>Air Filter</h3>
+            <div class="price">85,000</div><a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+        <div class="card"><img src="capillary tube.webp">
+            <h3>capillary tube</h3>
+            <div class="price">15,000</div><a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+
+        <div class="card"><img src="copper pipe.webp">
+            <h3>Copper pipe</h3>
+            <div class="price">6,500</div><a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+        <div class="card"><img src="fan motor.webp">
+            <h3>Fan motor</h3>
+            <p>For all fridge & freezer brands.</p>
+            <div class="price">6,000</div>
+            <a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+        <div class="card">
+            <img src="Ac remote.webp">
+            <h3>Ac remote</h3>
+            <p>We sell quality Air-conditioner remote</p>
+            <div class="price">5,000</div>
+            <a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+        <div class="card">
+            <img src="OIP.webp">
+            <h3>Evaporator</h3>
+            <p>quality Evaporator for diffrent sizes of fridge</p>
+            <a href="https://wa.me/2348037755523">Chat on Whatsapp</a>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <div id="page-contact" class="page">
+        <div class="section">
+            <h2>Contact Us</h2>
+            `<div class="contact-card">
+                <p><strong>EJIDY REFRIGERATION CO. LTD</strong></p>
+                <input type="text" id="name" placeholder="Your name">
+                <input type="text" id="need" placeholder="What part do you need?">
+                <button class="submit" onclick="sendWhatsapp()">Send on Whatsapp</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer>
+        <p>&copy; 2026 EJIDY REFRIGERATION CO. LTD, ANAMBRA STATE</p>
+        <a href="https://wa.me/23437755523"></a>
+    </footer>
+
+    </section>
+
+    <!-- JAVASCRIPT FUNCTIONALITY -->
+    <script>
+        const WHATSAPP_NUMBER = "2348037755523";
+
+        // 1. Toast Notification Helper
+        function showToast(message) {
+            let toast = document.getElementById("toast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3200);
+        }
+
+        // 2. Navigation & Smooth Section Routing
+        function showPage(pageName) {
+            const targetMap = {
+                home: document.querySelector('section[id="#home"]'),
+                products: document.querySelector('.products'),
+                aboutus: document.getElementById('page-products'),
+                contactus: document.getElementById('page-contact')
+            };
+
+            const target = targetMap[pageName] || targetMap.home;
+            if (target) {
+                target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            }
+        }
+
+        // 3. Direct WhatsApp Product Order Function
+        function order(productName, price = "") {
+            const priceText = price ? ` (Listed at ₦${price})` : "";
+            const text = `Hello EJIDY REFRIGERATION CO. LTD, I would like to order: *${productName}*${priceText}. Is it currently available?`;
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+            showToast(`Opening WhatsApp to order ${productName}...`);
+            window.open(url, "_blank");
+        }
+
+        // 4. Contact Form -> WhatsApp Message Sender
+        function sendWhatsapp() {
+            const nameInput = document.getElementById("name");
+            const needInput = document.getElementById("need");
+
+            const name = nameInput.value.trim();
+            const need = needInput.value.trim();
+
+            if (!name || !need) {
+                showToast("⚠️ Please enter both your name and the spare part you need.");
+                if (!name) nameInput.focus();
+                else needInput.focus();
+                return;
+            }
+
+            const message = `Hello EJIDY REFRIGERATION CO. LTD,\n\n*Customer Name:* ${name}\n*Part Needed:* ${need}\n\nPlease let me know the price and availability.`;
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+            showToast("Redirecting to WhatsApp...");
+            window.open(url, "_blank");
+            nameInput.value = "";
+            needInput.value = "";
+        }
+
+        // 5. Enhance Existing DOM on Load (Live Search, Active Links, Pre-filled WhatsApp Links)
+        document.addEventListener("DOMContentLoaded", () => {
+            // Wire navbar anchor clicks smoothly
+            document.querySelectorAll('.navbar a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const route = href.replace('#', '');
+                        document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
+                        link.classList.add('active');
+                        showPage(route);
+                    }
+                });
+            });
+
+            // Automatically attach product names & prices to generic WhatsApp card links
+            document.querySelectorAll('.card').forEach(card => {
+                const titleEl = card.querySelector('h3');
+                const priceEl = card.querySelector('.price');
+                const linkEl = card.querySelector('a');
+                const imgEl = card.querySelector('img');
+
+                const title = titleEl ? titleEl.textContent.trim() : "Spare Part";
+                const price = priceEl ? priceEl.textContent.trim() : "";
+
+                if (linkEl) {
+                    const msg = `Hello EJIDY REFRIGERATION, I'm interested in *${title}*${price ? ` (₦${price})` : ""}.`;
+                    linkEl.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+                    linkEl.target = "_blank";
+                }
+
+                // Graceful fallback if local .webp images aren't found yet
+                if (imgEl) {
+                    imgEl.onerror = function () {
+                        this.src = `https://placehold.co/400x260/111827/00f0ff?text=${encodeURIComponent(title)}`;
+                    };
+                }
+            });
+
+            // Inject Live Search Bar right above the main product grid
+            const firstGrid = document.querySelector('.products');
+            if (firstGrid) {
+                const controls = document.createElement('div');
+                controls.className = 'catalog-controls';
+                controls.innerHTML = `
+                    <input type="text" id="partSearch" placeholder="🔍 Search parts (e.g. Air Filter, Copper pipe, Fan motor)...">
+                    <span class="catalog-badge" id="partCount">Showing all parts</span>
+                `;
+                firstGrid.parentNode.insertBefore(controls, firstGrid);
+
+                const searchInput = document.getElementById('partSearch');
+                const countBadge = document.getElementById('partCount');
+                const allCards = document.querySelectorAll('.card');
+
+                searchInput.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase().trim();
+                    let visible = 0;
+
+                    allCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        const match = text.includes(term);
+                        card.style.display = match ? 'flex' : 'none';
+                        if (match) visible++;
+                    });
+
+                    countBadge.textContent = term
+                        ? `Found ${visible} matching part(s)`
+                        : `Showing all ${allCards.length} parts`;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
